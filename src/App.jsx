@@ -1,5 +1,6 @@
 import React from "react";
-import ExpenseList from "./components/Expenses/ExpenseList";
+import ExpenseList from "./components/Expenses/ExpenseList"
+import NewExpense from "./components/Forms/NewExpense";
 
 function App() {
   const expenses = [
@@ -24,9 +25,17 @@ function App() {
     },
   ];
 
+  const addExpenseHandler = expense => {
+    const expenseData = {
+      ...expense,
+      id: Math.random().toString()
+    }
+    console.log(expenseData)
+  }
+
   return (
     <div>
-      <h2>Expense Tracker</h2>
+      <NewExpense addExpenseHandler={addExpenseHandler}/>
       <ExpenseList expenses={expenses}/>
     </div>
   );
